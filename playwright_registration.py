@@ -2,7 +2,8 @@ from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
-    page = browser.new_page()
+    context = browser.new_context()
+    page = context.new_page()
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
@@ -26,5 +27,7 @@ with sync_playwright() as playwright:
     dashboard_panel = page.get_by_test_id('dashboard-toolbar-title-text')
     expect(dashboard_panel).to_be_visible()
     expect(dashboard_panel).to_have_text('Dashboard')
+
+    context.storage_state(path="browser-state.json")
 
     # page.wait_for_timeout(1000)

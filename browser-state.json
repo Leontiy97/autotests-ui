@@ -1,0 +1,14 @@
+{"cookies": [], "origins": [
+  {
+    "localStorage": [
+      {
+        "name": "persist:users",
+        "value": "{\"user\":\"{\\\"id\\\":\\\"9345f9e4-3742-4ad9-a5c3-2288a06379c4\\\",\\\"email\\\":\\\"user.name@gmail.com\\\",\\\"username\\\":\\\"username\\\",\\\"password\\\":\\\"password\\\"}\",\"users\":\"[{\\\"id\\\":\\\"9345f9e4-3742-4ad9-a5c3-2288a06379c4\\\",\\\"email\\\":\\\"user.name@gmail.com\\\",\\\"username\\\":\\\"username\\\",\\\"password\\\":\\\"password\\\"}]\",\"_persist\":\"{\\\"version\\\":-1,\\\"rehydrated\\\":true}\"}"
+      },
+      {
+        "name": "persist:courses",
+        "value": "{\"course\":\"{\\\"id\\\":\\\"\\\",\\\"title\\\":\\\"\\\",\\\"userId\\\":\\\"\\\",\\\"maxScore\\\":0,\\\"minScore\\\":0,\\\"exercises\\\":[],\\\"description\\\":\\\"\\\",\\\"previewImage\\\":null,\\\"estimatedTime\\\":\\\"\\\"}\",\"courses\":\"[]\",\"_persist\":\"{\\\"version\\\":-1,\\\"rehydrated\\\":true}\"}"
+      }
+    ],
+    "origin": "https://nikita-filonov.github.io"
+  }]}
