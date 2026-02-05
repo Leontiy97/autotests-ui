@@ -1,10 +1,10 @@
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import BrowserContext, expect
 import pytest
 
 @pytest.mark.registration
 @pytest.mark.regression
-def test_make_registration(context):
-    page = context.new_page()
+def test_make_registration(chromium_context: BrowserContext):
+    page = chromium_context.new_page()
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
@@ -29,11 +29,13 @@ def test_make_registration(context):
     expect(dashboard_panel).to_be_visible()
     expect(dashboard_panel).to_have_text('Dashboard')
 
-    context.storage_state(path="browser-state.json")
+    chromium_context.storage_state(path="browser-state.json")
 
     # page.wait_for_timeout(1000)
 
-def test_successful_registration(authorized_context):
+@pytest.mark.registration
+@pytest.mark.regression
+def test_successful_registration(authorized_context: BrowserContext):
     page = authorized_context.new_page()
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard")
