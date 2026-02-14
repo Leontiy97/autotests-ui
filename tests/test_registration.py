@@ -3,41 +3,35 @@ import pytest
 
 @pytest.mark.registration
 @pytest.mark.regression
-def test_make_registration(chromium_context: BrowserContext):
-    page = chromium_context.new_page()
+def test_make_registration(chromium_page: BrowserContext):
+    chromium_page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
-    page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
-
-    email_input = page.get_by_test_id('registration-form-email-input').locator('input')
+    email_input = chromium_page.get_by_test_id('registration-form-email-input').locator('input')
     expect(email_input).to_be_visible()
     email_input.fill('user.name@gmail.com')
 
-    name_input = page.get_by_test_id('registration-form-username-input').locator('input')
+    name_input = chromium_page.get_by_test_id('registration-form-username-input').locator('input')
     expect(name_input).to_be_visible()
     name_input.fill('username')
 
-    password_input = page.get_by_test_id('registration-form-password-input').locator('input')
+    password_input = chromium_page.get_by_test_id('registration-form-password-input').locator('input')
     expect(password_input).to_be_visible()
     password_input.fill('password')
 
-    reg_button = page.get_by_test_id('registration-page-registration-button')
+    reg_button = chromium_page.get_by_test_id('registration-page-registration-button')
     expect(reg_button).to_be_visible()
     reg_button.click()
 
-    page.wait_for_url('**/#/dashboard')
-    dashboard_panel = page.get_by_test_id('dashboard-toolbar-title-text')
+    chromium_page.wait_for_url('**/#/dashboard')
+    dashboard_panel = chromium_page.get_by_test_id('dashboard-toolbar-title-text')
     expect(dashboard_panel).to_be_visible()
     expect(dashboard_panel).to_have_text('Dashboard')
-
-    chromium_context.storage_state(path="browser-state.json")
 
     # page.wait_for_timeout(1000)
 
 @pytest.mark.registration
 @pytest.mark.regression
-def test_successful_registration(authorized_context: BrowserContext):
-    page = authorized_context.new_page()
-
-    page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard")
+def test_successful_registration(chromium_page_with_state: BrowserContext):
+    chromium_page_with_state.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard")
 
     # page.wait_for_timeout(5000)
